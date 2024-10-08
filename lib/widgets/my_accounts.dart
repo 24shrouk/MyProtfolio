@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_images.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // class MyAccounts extends StatefulWidget {
 //   const MyAccounts({
@@ -50,6 +51,11 @@ class _MyAccountsState extends State<MyAccounts> {
     Assets.imagesGithub,
     Assets.imagesLinkedin,
   ];
+
+  final socialUrls = <String>[
+    'https://github.com/24shrouk', // GitHub URL
+    'https://www.linkedin.com/in/shrouk-ahmed-397b61281/', // LinkedIn URL
+  ];
   var socialBI;
   @override
   Widget build(BuildContext context) {
@@ -60,7 +66,20 @@ class _MyAccountsState extends State<MyAccounts> {
         child: ListView.separated(
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {},
+              onTap: () async {
+                final url = Uri.parse(socialUrls[index]);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(
+                    url,
+                    mode: LaunchMode.inAppWebView,
+                  );
+                } else {
+                  // Handle the case where the URL can't be launched
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Could not launch $url')),
+                  );
+                }
+              },
               onHover: (value) {
                 setState(() {
                   if (value) {

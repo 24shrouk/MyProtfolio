@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_style.dart';
 import 'package:responsive_bmi/widgets/about_me_text_section.dart';
+import 'package:responsive_bmi/widgets/about_me_text_section_mobile_layout.dart';
 import 'package:responsive_bmi/widgets/mobile_contact_body.dart';
 import 'package:responsive_bmi/widgets/mobile_personal_info.dart';
 import 'package:responsive_bmi/widgets/projects_body.dart';
@@ -26,7 +27,7 @@ class _MobileLayoutState extends State<MobileLayout> {
 
   final screenList = const <Widget>[
     MobilePersonalInfo(),
-    AboutMeTextSection(),
+    AboutMeTextSectionMobileLayout(),
     ProjectsBody(crossElementnum: 1),
     MobileContactBody(),
   ];

@@ -35,7 +35,7 @@ class AboutMeTextSection extends StatelessWidget {
           child: FadeInLeft(
             duration: const Duration(milliseconds: 1600),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis',
+              "I am a passionate Flutter developer with a strong focus on creating high-performance, visually appealing mobile applications. With a solid foundation in computer science and experience in building responsive, user-friendly apps, I specialize in crafting seamless cross-platform solutions. I am dedicated to continuous learning and always strive to stay updated with the latest trends, ensuring my work delivers quality and attention to detail.",
               style: AppStyle.styleReguler18(context)
                   .copyWith(color: Colors.white),
               softWrap: true, // Allows text to wrap automatically

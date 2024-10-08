@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:responsive_bmi/utils/app_colors.dart';
 
 class PlatForms extends StatelessWidget {
-  const PlatForms({super.key, required this.image});
+  const PlatForms({super.key, required this.image, required this.onTap});
 
   final String image;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class PlatForms extends StatelessWidget {
         borderRadius: BorderRadius.circular(500),
         splashColor: AppColors.maintextcolor2,
         hoverColor: AppColors.backgroundColor,
-        onTap: () {},
+        onTap: onTap,
         child: Image.asset(
           image,
           width: 20,
