@@ -22,13 +22,17 @@ class Assets {
   /// assets/images/github.png
   static const String imagesGithub = "assets/images/github.png";
 
-  /// Assets for imagesHadith
-  /// assets/images/hadith.png
-  static const String imagesHadith = "assets/images/hadith.png";
+  /// Assets for imagesHadith2
+  /// assets/images/hadith2.png
+  static const String imagesHadith2 = "assets/images/hadith2.png";
 
   /// Assets for imagesHomeBackground
   /// assets/images/home_background.svg
   static const String imagesHomeBackground = "assets/images/home_background.svg";
+
+  /// Assets for imagesIbm
+  /// assets/images/ibm.png
+  static const String imagesIbm = "assets/images/ibm.png";
 
   /// Assets for imagesLinkedin
   /// assets/images/linkedin.png
@@ -42,12 +46,16 @@ class Assets {
   /// assets/images/programmer.svg
   static const String imagesProgrammer = "assets/images/programmer.svg";
 
+  /// Assets for imagesQuiz
+  /// assets/images/quiz.png
+  static const String imagesQuiz = "assets/images/quiz.png";
+
   /// Assets for imagesShare
   /// assets/images/share.png
   static const String imagesShare = "assets/images/share.png";
 
-  /// Assets for imagesShoppingApp
-  /// assets/images/shopping_app.png
-  static const String imagesShoppingApp = "assets/images/shopping_app.png";
+  /// Assets for imagesShopping
+  /// assets/images/shopping.jpg
+  static const String imagesShopping = "assets/images/shopping.jpg";
 }
 

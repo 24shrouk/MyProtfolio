@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_style.dart';
 import 'package:responsive_bmi/widgets/contact_text.dart';
 import 'package:responsive_bmi/widgets/custom_send_button.dart';
@@ -64,6 +65,7 @@ Future sendEmail() async {
 }
 
 class _MobileContactBodyState extends State<MobileContactBody> {
+  final formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -76,61 +78,84 @@ class _MobileContactBodyState extends State<MobileContactBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const ContactText(),
-        const SizedBox(
-          height: 24,
-        ),
-        CustomTextFormFiled(
-          onSaved: (value) => nameController.text = value!,
-          controller: nameController,
-          label: Text(
-            'Your name',
-            style: AppStyle.styleBold18(context),
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const ContactText(),
+          const SizedBox(
+            height: 24,
           ),
-          hint: 'Name',
-        ),
-        const SizedBox(height: 20),
-        CustomTextFormFiled(
-          onSaved: (value) => emailController.text = value!,
-          controller: emailController,
-          label: Text(
-            'Your email',
-            style: AppStyle.styleBold18(context),
+          CustomTextFormFiled(
+            onSaved: (value) => nameController.text = value!,
+            controller: nameController,
+            label: Text(
+              'Your name',
+              style: AppStyle.styleBold18(context),
+            ),
+            hint: 'Name',
           ),
-          hint: 'Email',
-        ),
-        const SizedBox(height: 20),
-        CustomTextFormFiled(
-          onSaved: (value) => messageController.text = value!,
-          controller: messageController,
-          label: Text(
-            'Your message',
-            style: AppStyle.styleBold18(context),
+          const SizedBox(height: 20),
+          CustomTextFormFiled(
+            onSaved: (value) => emailController.text = value!,
+            controller: emailController,
+            label: Text(
+              'Your email',
+              style: AppStyle.styleBold18(context),
+            ),
+            hint: 'Email',
           ),
-          hint: 'Message',
-          maxlines: 5,
-        ),
-        const SizedBox(height: 20),
-        Align(
-          alignment: Alignment.centerLeft, // Align the button to the left
-          child: SizedBox(
-            width: 200, // Set a specific width for the button
-            child: CustomSendButton(
-              onPressed: () {
-                sendEmail();
-                print('Sending email with the following details:');
-                print('Name: ${nameController.text}');
-                print('Email: ${emailController.text}');
-                print('Message: ${messageController.text}');
-              },
-            ), // Button will take only this width
+          const SizedBox(height: 20),
+          CustomTextFormFiled(
+            onSaved: (value) => messageController.text = value!,
+            controller: messageController,
+            label: Text(
+              'Your message',
+              style: AppStyle.styleBold18(context),
+            ),
+            hint: 'Message',
+            maxlines: 5,
           ),
-        ),
-      ],
+          const SizedBox(height: 20),
+          Align(
+            alignment: Alignment.centerLeft, // Align the button to the left
+            child: SizedBox(
+              width: 200, // Set a specific width for the button
+              child: CustomSendButton(
+                onPressed: () async {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    int statusCode = await sendEmail() ?? 500;
+                    if (statusCode == 200) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            padding: EdgeInsets.all(16),
+                            backgroundColor: AppColors.maintextcolor3,
+                            content: Text(
+                              'Email sent successfully',
+                              style: TextStyle(color: Colors.white),
+                            )),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            padding: EdgeInsets.all(16),
+                            backgroundColor: AppColors.maintextcolor3,
+                            content: Text(
+                              'Email sent successfully',
+                              style: TextStyle(color: Colors.white),
+                            )),
+                      );
+                    }
+                  }
+                },
+              ), // Button will take only this width
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:responsive_bmi/views/home_view.dart';
 
 void main() {
   runApp(
+      //Protfilo()
       DevicePreview(enabled: true, builder: ((context) => const Protfilo())));
 }
 

@@ -4,41 +4,6 @@ import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-// class MyAccounts extends StatefulWidget {
-//   const MyAccounts({
-//     super.key,
-//   });
-
-//   @override
-//   State<MyAccounts> createState() => _MyAccountsState();
-// }
-
-// class _MyAccountsState extends State<MyAccounts> {
-//   var socialBI;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         FadeInRight(
-//             duration: const Duration(milliseconds: 1600),
-//             child: const PlatForms(image: Assets.imagesGithub)),
-//         const SizedBox(
-//           width: 12,
-//         ),
-//         FadeInRight(
-//             duration: const Duration(milliseconds: 1600),
-//             child: const PlatForms(image: Assets.imagesLinkedin)),
-//         const SizedBox(
-//           width: 12,
-//         ),
-//         FadeInRight(
-//             duration: const Duration(milliseconds: 1600),
-//             child: const CvButton()),
-//       ],
-//     );
-//   }
-// }
-
 class MyAccounts extends StatefulWidget {
   const MyAccounts({super.key});
 
@@ -68,17 +33,7 @@ class _MyAccountsState extends State<MyAccounts> {
             return InkWell(
               onTap: () async {
                 final url = Uri.parse(socialUrls[index]);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(
-                    url,
-                    mode: LaunchMode.inAppWebView,
-                  );
-                } else {
-                  // Handle the case where the URL can't be launched
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Could not launch $url')),
-                  );
-                }
+                await launchUrl(url, mode: LaunchMode.externalApplication);
               },
               onHover: (value) {
                 setState(() {

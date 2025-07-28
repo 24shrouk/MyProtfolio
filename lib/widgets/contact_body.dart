@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_style.dart';
 import 'package:responsive_bmi/widgets/contact_text.dart';
 import 'package:responsive_bmi/widgets/custom_send_button.dart';
@@ -135,13 +136,23 @@ class _ContactBodyState extends State<ContactBody> {
                           int statusCode = await sendEmail() ?? 500;
                           if (statusCode == 200) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Email sent successfully')),
+                              SnackBar(
+                                  padding: EdgeInsets.all(16),
+                                  backgroundColor: AppColors.maintextcolor3,
+                                  content: Text(
+                                    'Email sent successfully',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Failed to send email')),
+                              SnackBar(
+                                  padding: EdgeInsets.all(16),
+                                  backgroundColor: AppColors.maintextcolor3,
+                                  content: Text(
+                                    'Email sent successfully',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             );
                           }
                         }

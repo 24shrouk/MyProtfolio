@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_bmi/utils/app_colors.dart';
 import 'package:responsive_bmi/utils/app_images.dart';
 import 'package:responsive_bmi/utils/app_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsBody extends StatefulWidget {
   const ProjectsBody({super.key, required this.crossElementnum});
@@ -16,10 +17,23 @@ class _ProjectsBodyState extends State<ProjectsBody> {
   final onHoverEffect = Matrix4.identity()..scale(1.0);
 
   List images = <String>[
-    Assets.imagesHadith,
-    Assets.imagesHadith,
-    Assets.imagesHadith,
-    Assets.imagesHadith,
+    Assets.imagesHadith2,
+    Assets.imagesShopping,
+    Assets.imagesQuiz,
+    Assets.imagesIbm,
+  ];
+  List texts = <String>[
+    'Hadith App',
+    'Shopping App',
+    'Quiz App',
+    'BMI App',
+  ];
+
+  final projectsUrls = <String>[
+    'https://www.linkedin.com/posts/shrouk-ahmed-397b61281_excited-to-announce-the-completion-of-my-activity-7180623615611031554-d2hK?utm_source=share&utm_medium=member_desktop',
+    'https://github.com/24shrouk/E-Commerce',
+    'https://github.com/24shrouk/IP_Task4',
+    'https://www.linkedin.com/posts/shrouk-ahmed-397b61281_im-thrilled-to-share-the-completion-of-the-activity-7178771548034457600-1wqn?utm_source=share&utm_medium=member_desktop',
   ];
   var hoverIndex;
 
@@ -53,7 +67,10 @@ class _ProjectsBodyState extends State<ProjectsBody> {
               return FadeInUpBig(
                 duration: const Duration(milliseconds: 1600),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    final url = Uri.parse(projectsUrls[index]);
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  },
                   onHover: (value) {
                     setState(() {
                       if (value) {
@@ -93,8 +110,9 @@ class _ProjectsBodyState extends State<ProjectsBody> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'Hadith',
-                              style: AppStyle.styleBold18(context),
+                              texts[index],
+                              style: AppStyle.styleBold18(context)
+                                  .copyWith(color: Colors.white),
                             ),
                             const SizedBox(
                               height: 30,

@@ -59,39 +59,6 @@ class _CustomHeaderState extends State<CustomHeader> {
             scrollDirection: Axis.horizontal,
           ),
         ),
-        // Text(
-        //   'Home',
-        //   style: AppStyle.styleReguler18(context).copyWith(
-        //     color: Colors.white,
-        //   ),
-        // ),
-        // const SizedBox(
-        //   width: 20,
-        // ),
-        // Text(
-        //   'About me',
-        //   style: AppStyle.styleReguler18(context).copyWith(
-        //     color: Colors.white,
-        //   ),
-        // ),
-        // const SizedBox(
-        //   width: 20,
-        // ),
-        // Text(
-        //   'Projects',
-        //   style: AppStyle.styleReguler18(context).copyWith(
-        //     color: Colors.white,
-        //   ),
-        // ),
-        // const SizedBox(
-        //   width: 20,
-        // ),
-        // Text(
-        //   'Contact',
-        //   style: AppStyle.styleReguler18(context).copyWith(
-        //     color: Colors.white,
-        //   ),
-        // ),
       ],
     );
   }
